@@ -107,24 +107,3 @@ func convertFromOutOfRangeChars(data string) string {
 	}
 	return string(values)
 }
-
-// This method removes encoded sql # comments
-//func convertFromUrlencodeSqlComment(data string) string {
-//	re, _ := regexp.Compile(`(?:#.*?\n)`)
-//	if arr := re.FindAllString(data, -1); len(arr) > 0 {
-//		converted := data
-//		for _, match := range arr {
-//			converted = strings.Replace(converted, match, " ", 1)
-//		}
-//		data += "\n" + converted
-//	}
-//	return data
-//}
-//func main() {
-//	type fs func(string) string
-//	data := "hi"
-//	f := []fs{convertQuotes}
-//	for _, v := range f {
-//		data = v(data)
-//	}
-//}
