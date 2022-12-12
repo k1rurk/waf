@@ -3,6 +3,8 @@
 # File-based project format
 *.iws
 
+logs/*.log
+
 .idea_modules/
 
 # JIRA plugin

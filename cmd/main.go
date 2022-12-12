@@ -9,8 +9,8 @@ import (
 
 func main() {
 	cfg := config.ReadConfigFile()
-	cache := filter.ReadFilterFile(cfg.Filename)
-
+	config.OpenLogFile(cfg.Log)
+	cache := filter.ReadFilterFile(cfg.Filter)
 	prx, err := proxy.NewProxy(cfg.Remote)
 	if err != nil {
 		log.Fatalln(err)

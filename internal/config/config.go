@@ -4,12 +4,14 @@ import (
 	"gopkg.in/yaml.v3"
 	"io/ioutil"
 	"log"
+	"os"
 )
 
 type Config struct {
-	Bind     string `yaml:"bind"`
-	Remote   string `yaml:"remote"`
-	Filename string `yaml:"filter-filename"`
+	Bind   string `yaml:"bind"`
+	Remote string `yaml:"remote"`
+	Filter string `yaml:"filter-filename"`
+	Log    string `yaml:"log-filename"`
 }
 
 func ReadConfigFile() *Config {
@@ -26,4 +28,16 @@ func ReadConfigFile() *Config {
 	}
 
 	return config
+}
+
+func OpenLogFile(filename string) {
+	if filename != "" {
+		logfile, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
+
+		if err != nil {
+			log.Fatalln("OpenLogfile: os.OpenFile: ", err)
+		}
+
+		log.SetOutput(logfile)
+	}
 }

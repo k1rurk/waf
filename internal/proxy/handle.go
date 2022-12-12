@@ -33,7 +33,7 @@ func (c *Handle) ProxyRequestHandler(proxy *httputil.ReverseProxy) func(http.Res
 				for _, f := range sqli.FArray {
 					val = f(val)
 				}
-				log.Println(val)
+				log.Println("Value: ", val)
 				for _, fltr := range c.cache.Filter {
 					if matched, _ := regexp.MatchString(fltr.Rule, val); matched {
 						log.Printf("Rule %s captured vulnerability: %s", fltr.Id, fltr.Description)
